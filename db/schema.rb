@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121203150741) do
+ActiveRecord::Schema.define(:version => 20121203181938) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -73,6 +73,11 @@ ActiveRecord::Schema.define(:version => 20121203150741) do
   end
 
   add_index "doctors", ["clinic_id"], :name => "index_doctors_on_clinic_id"
+
+  create_table "factura_venta", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "facturas", :force => true do |t|
     t.datetime "created_at", :null => false

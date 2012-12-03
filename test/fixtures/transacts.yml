@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  doctor: 
+  patient: 
+  factura_venta: 
+  estado: 1
+
+two:
+  doctor: 
+  patient: 
+  factura_venta: 
+  estado: 1

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  ref: MyString
+  matrix: MyString
+  base: 1.5
+  proy: 1.5
+  vol: 1
+
+two:
+  ref: MyString
+  matrix: MyString
+  base: 1.5
+  proy: 1.5
+  vol: 1

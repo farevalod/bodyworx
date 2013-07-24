@@ -1,3 +1,4 @@
 class FacturaVenta < ActiveRecord::Base
-  # attr_accessible :title, :body
+  has_many :inventories
+  attr_accessible :factura_id
 end

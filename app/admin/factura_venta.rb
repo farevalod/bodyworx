@@ -1,7 +1,6 @@
 ActiveAdmin.register FacturaVenta do
- 	form do |f|
-	      f.inputs "Details" do
-			f.input :transact
+ 	form :html => { :enctype => "multipart/form-data" } do |f|
+	   f.inputs "Details" do
 		  end
 		f.buttons
 	end

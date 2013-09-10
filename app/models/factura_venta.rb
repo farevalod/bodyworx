@@ -1,4 +1,6 @@
 class FacturaVenta < ActiveRecord::Base
   has_many :inventories
-  attr_accessible :factura_id
+  has_many :transacts
+  attr_accessible :factura_id, :monto
+  accepts_nested_attributes_for :transacts
 end

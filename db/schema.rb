@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121203184229) do
+ActiveRecord::Schema.define(:version => 20130910214608) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -96,6 +96,11 @@ ActiveRecord::Schema.define(:version => 20121203184229) do
   end
 
   add_index "inventories", ["factura_id"], :name => "index_inventories_on_factura_id"
+
+  create_table "inventories_transacts", :force => true do |t|
+    t.integer "inventory_id"
+    t.integer "transact_id"
+  end
 
   create_table "patients", :force => true do |t|
     t.string   "first"

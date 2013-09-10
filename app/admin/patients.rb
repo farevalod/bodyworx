@@ -1,9 +1,9 @@
 ActiveAdmin.register Patient do
- index do
+  index do
       column :first, :label => "Nombre"
       column :last, :label => "Apellido"
       default_actions
-    end
+  end
 	form do |f|
 	      f.inputs "Details" do
 			f.input :first, :label => "Nombre"
@@ -11,4 +11,11 @@ ActiveAdmin.register Patient do
 		  end
 		f.buttons
 	end
+  show do |p| 
+    attributes_table do
+      row "Nombre Completo" do |p|
+        p.first+" "+p.last
+      end
+    end
+  end  
 end 

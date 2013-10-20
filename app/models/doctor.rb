@@ -1,5 +1,6 @@
 class Doctor < ActiveRecord::Base
   belongs_to :clinic
+  has_many :transacts
   attr_accessible :dob, :first, :last, :clinic_id
 
   def self.no_pendientes

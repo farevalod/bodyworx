@@ -5,10 +5,12 @@ class Transact < ActiveRecord::Base
     t = Transact.new(doctor_id: self.doctor_id, patient_id: self.patient_id, estado: 2)
     yield
     new_inv = self.inventories.select{|x| x.id}
-    Inventory.where("id IN (?)",(old_inv - new_inv)).each do |i|
-      t.inventories << i
+    if t.estado == 1
+      Inventory.where("id IN (?)",(old_inv - new_inv)).each do |i|
+        t.inventories << i
+      end
+      t.save
     end
-    t.save
   end
   has_many :inventories_transacts, inverse_of: :inventory
   has_many :inventories, :through => :inventories_transacts

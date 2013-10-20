@@ -1,5 +1,5 @@
 ActiveAdmin.register Transact do
- form do |f|
+ form :title => "Nueva Transaccion" do |f|
 	      f.inputs "Details" do
           f.input :doctor_id, :as => :select, :collection => Hash[Doctor.all.map{|u| [u.first+" "+u.last, u.id]}]
           f.input :patient_id, :as => :select, :collection => Hash[Patient.all.map{|u| [u.first+" "+u.last, u.id]}]
@@ -18,28 +18,30 @@ ActiveAdmin.register Transact do
         end
 		f.buttons
 	end 
-  index do |f|
+  index :title => "Transacciones" do |f|
     column 'id' do |t|
     link_to t.id, admin_transact_path(t)
     end
     column :estado_s
     column 'Doctor' do |t|
-      t.doctor.first+' '+t.doctor.last
+      if t.doctor
+        t.doctor.first+' '+t.doctor.last
+      end
     end
     column 'Paciente' do |t|
-      t.patient.first+' '+t.patient.last
+      if t.patient
+        t.patient.first+' '+t.patient.last
       end
+    end
       default_actions
   end
 
   show :title => "Detalles Transaccion" do |v|
       attributes_table do
         row "Doctor" do
-          v.doctor.first+" "+v.doctor.last
           link_to v.doctor.first+' '+v.doctor.last, admin_doctor_path(v.doctor)
         end
         row "Paciente" do
-          v.patient.first+" "+v.patient.last
           link_to v.patient.first+' '+v.patient.last, admin_patient_path(v.patient)
         end
         row "Factura Venta" do

@@ -1,7 +1,11 @@
 ActiveAdmin.register Doctor do
-  index do
-      column :first, :label => "Nombre"
-      column :last, :label => "Apellido"
+  index :title => "Doctores" do
+      column "Nombre", :sortable => :first do  |d|
+        d.first
+      end
+      column "Apellido", :sortable => :last do  |d|
+        d.last
+      end
       default_actions
     end
 	form do |f|
@@ -13,22 +17,28 @@ ActiveAdmin.register Doctor do
     end
 		f.buttons
 	end
-  show do |d|
+  show :title => "Doctor" do |d|
   attributes_table do
-    row :first
-    row :last
-    row :dob
+      row "Nombre", :sortable => :first do  |d|
+        d.first
+      end
+      row "Apellido", :sortable => :last do  |d|
+        d.last
+      end
+      row "Fecha de nacimiento", :sortable => :dob do  |d|
+        d.dob
+      end
+   if d.transacts
     div do
-   if Transact.where(:doctor_id => d.id).where(:estado =>  0)
      panel("Transacciones Pendientes") do 
-       table_for(Transact.where(:doctor_id => d.id).where(:estado =>  0).each) do
+       table_for(d.transacts.each) do
         column :id do |t|
           link_to t.id, admin_transact_path(t)
         end
-        column :nombre do |t|
-          t.doctor.first+" "+t.doctor.last
+        column :nombre_paciente do |t|
+          t.patient.first+" "+t.patient.last
         end
-        column :estado
+        column :estado_s
        end
      end
     end

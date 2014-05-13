@@ -15,7 +15,11 @@ form do |f|
         row :ref
         row :lot
         row "Factura" do
-          v.factura.number
+          if v.factura
+            v.factura.number
+          else
+            0
+          end
         end
       end
       if v.transacts.size > 0

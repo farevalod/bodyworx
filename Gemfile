@@ -8,6 +8,7 @@ gem 'rails', '3.2.9'
 gem 'sqlite3'
 gem 'mysql2'
 gem 'activeadmin'
+gem 'rails-i18n'
 
 
 # Gems used only for assets and not required

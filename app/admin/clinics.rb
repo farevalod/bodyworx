@@ -1,4 +1,4 @@
-ActiveAdmin.register Clinic do
+ActiveAdmin.register Clinic, :as => "Clinicas"do
  index :title => "Clinicas"  do
     column "Clinica", :sortable => :name do  |c|
       c.name

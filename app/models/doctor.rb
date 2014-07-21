@@ -15,4 +15,8 @@ class Doctor < ActiveRecord::Base
     end
     return Doctor.where("id IN (?)",ds - d_id_ts)
   end
+
+  def name
+	  return self.first+" "+self.last
+  end
 end
